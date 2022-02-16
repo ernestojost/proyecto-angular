@@ -1,0 +1,23 @@
+<div class="card my-5" *ngIf="predictGender.gender != ''">
+    <div class="card-header">Género</div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p *ngIf="predictGender.count != 0; else elseGenderize">
+          A partir de <b>{{ predictGender.count }}</b> personas con el nombre
+          <b>{{ name }}</b
+          >, el género más probable es <b>{{ predictGender.gender }}</b> con un <b>{{ predictGender.probability * 100 }}%</b>.
+        </p>
+        <ng-template #elseGenderize>
+          <p>
+            No hay personas con el nombre <b>{{ name }}</b> en los registros de <b>api.genderize.io</b>
+          </p>
+        </ng-template>
+  
+        <p class="blockquote-footer d-flex justify-content-end mt-2">
+          <a href="https://api.genderize.io/" class="text-muted text-decoration-none">
+            api.genderize.io
+          </a>
+        </p>
+      </blockquote>
+    </div>
+  </div>

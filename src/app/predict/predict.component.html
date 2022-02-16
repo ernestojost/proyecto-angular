@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center display-2 mt-5">Predecir a partir de tu nombre</h1>
+  <p class="text-center lead">
+    El nombre que se ingresa se utiliza en diferentes APIs para predecir
+    datos sobre el mismo
+  </p>
+
+  <form class="col-lg-4 mx-auto mt-5" (submit)="predict(name.value)">
+    <div class="form-floating mb-3">
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        #name
+      />
+      <label for="name">Nombre</label>
+    </div>
+    <button class="btn btn-success w-100">Predecir</button>
+  </form>
+
+  <app-predict-age [name]="name.value"></app-predict-age>
+
+  <app-predict-gender [name]="name.value"></app-predict-gender>
+
+  <app-predict-nationality [name]="name.value"></app-predict-nationality>
+</div>

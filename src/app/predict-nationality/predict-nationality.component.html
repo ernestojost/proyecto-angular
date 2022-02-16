@@ -1,0 +1,33 @@
+<div class="card my-5" *ngIf="!arrayIsEmpty(predictNationality)">
+  <div class="card-header">Género</div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p *ngIf="predictNationality != []; else elseNationalize">
+        Las probabilidades para el nombre <b>{{ name }}</b> son las siguientes:
+      </p>
+
+      <ul *ngIf="predictNationality != []; else elseNationalize">
+        <li *ngFor="let country of predictNationality">
+          <b> {{ country.country_id }}</b
+          >: {{ country.probability }}%
+        </li>
+      </ul>
+
+      <ng-template #elseNationalize>
+        <p>
+          No hay personas con el nombre <b>{{ name }}</b> en los registros de
+          <b>api.nationalize.io</b>
+        </p>
+      </ng-template>
+
+      <p class="blockquote-footer d-flex justify-content-end mt-2">
+        <a
+          href="https://api.nationalize.io/"
+          class="text-muted text-decoration-none"
+        >
+          api.nationalize.io
+        </a>
+      </p>
+    </blockquote>
+  </div>
+</div>

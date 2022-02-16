@@ -1,0 +1,25 @@
+<div class="card my-5" *ngIf="predictAge.age != 0">
+  <div class="card-header">Edad</div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p *ngIf="predictAge.count != 0; else elseAgify">
+        A partir de <b>{{ predictAge.count }}</b>
+        personas con el nombre
+        <b>{{ name }}</b>
+        , la edad aproximada es de <b>{{ predictAge.age }}</b> años.
+      </p>
+      <ng-template #elseAgify>
+        <p>
+          No hay personas con el nombre <b>{{ name }}</b> en los registros de
+          <b>api.agify.io</b>
+        </p>
+      </ng-template>
+
+      <p class="blockquote-footer d-flex justify-content-end mt-2">
+        <a href="https://api.agify.io/" class="text-muted text-decoration-none">
+          api.agify.io
+        </a>
+      </p>
+    </blockquote>
+  </div>
+</div>
