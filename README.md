@@ -1,4 +1,8 @@
-# Myfirstapp
+# Proyecto Angular
+
+Proyecto sobre angular para practicar mis conocimientos sobre el framework, se puede ver su funcionamiento en el siguiente link: https://proyecto-angular.reddevs.net/
+
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
