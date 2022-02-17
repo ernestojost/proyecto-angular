@@ -74,13 +74,14 @@ export class PredictNationalityComponent implements OnInit {
   }
 
   /**
-   * Quita espacios en blanco de un string
+   * Quita espacios en blanco al inicio y al final de un string
    * 
-   * @param str String que se quiere limpiar espacion en blanco
-   * @returns String sin espacios en blanco
+   * @param str String a evaluar
+   * @returns string
    */
   trim(str:string) {
-    return str.replace(/ /g,'');
+    str = str.replace('#', '');
+    return str.replace(/^\s+|\s+$/g, '');
   }
 
   // Consume el API para obtener la edad
@@ -95,6 +96,7 @@ export class PredictNationalityComponent implements OnInit {
         });
         this.showPredictNacionality()
         this.hideSpinner();
+        this.enableButton();
       }
     )
   }
@@ -143,4 +145,12 @@ export class PredictNationalityComponent implements OnInit {
     document.getElementById('spinner-name')?.classList.add('d-none');
   }
 
+  /**
+   * Habilita el botón de "Predict"
+   * 
+   * @returns void
+   */
+  enableButton() {
+    document.getElementById('predict-button')?.classList.remove('disabled');
+  }
 }

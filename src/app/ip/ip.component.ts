@@ -48,8 +48,6 @@ export class IpComponent implements OnInit {
   threat_is_proxy: Boolean = false;
   threat_is_anonymous: Boolean = false;
   threat_is_known_attacker: Boolean = false;
-  threat_is_known_abuser: Boolean = false;
-  threat_is_threat: Boolean = false;
   threat_is_bogon: Boolean = false;
   count: string = '';
   
@@ -95,8 +93,6 @@ export class IpComponent implements OnInit {
         this.threat_is_proxy = data.threat.is_proxy;
         this.threat_is_anonymous = data.threat.is_anonymous;
         this.threat_is_known_attacker = data.threat.is_known_attacker;
-        this.threat_is_known_abuser = data.threat.is_known_abuser;
-        this.threat_is_threat = data.threat.is_threat;
         this.threat_is_bogon = data.threat.is_bogon;
         this.count = data.count;
       })

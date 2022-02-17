@@ -73,9 +73,15 @@ export class PredictAgeComponent implements OnInit {
     return (!str || 0 === str.length);
   }
 
-  // Quita espacios en blanco
+  /**
+   * Quita espacios en blanco al inicio y al final de un string
+   * 
+   * @param str String a evaluar
+   * @returns string
+   */
   trim(str:string) {
-    return str.replace(/ /g,'');
+    str = str.replace('#', '');
+    return str.replace(/^\s+|\s+$/g, '');
   }
 
   // Consume el API para obtener la edad
@@ -87,6 +93,7 @@ export class PredictAgeComponent implements OnInit {
         this.setCount(data.count);
         this.showPredictAge();
         this.hideSpinner();
+        this.enableButton();
       }
     )
   }
@@ -128,5 +135,14 @@ export class PredictAgeComponent implements OnInit {
   hideSpinner() {
     document.getElementById('spinner-name')?.classList.remove('d-block');
     document.getElementById('spinner-name')?.classList.add('d-none');
+  }
+
+  /**
+   * Habilita el botón de "Predict"
+   * 
+   * @returns void
+   */
+  enableButton() {
+    document.getElementById('predict-button')?.classList.remove('disabled');
   }
 }

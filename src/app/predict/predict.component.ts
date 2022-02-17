@@ -46,6 +46,17 @@ export class PredictComponent implements OnInit {
   }
 
   /**
+   * Quita espacios en blanco al inicio y al final de un string y quita # del string
+   * 
+   * @param str String a evaluar
+   * @returns string
+   */
+  trim(str:string) {
+    str = str.replace('#', '');
+    return str.replace(/^\s+|\s+$/g, '');
+  }
+
+  /**
    * Función que se ejecuta al hacer click en el botón de "Predict"
    * 
    * @param name Nombre del usuario
@@ -53,47 +64,40 @@ export class PredictComponent implements OnInit {
    */
   predict(name:string) {
     this.showSpinner();
-    if (!this.isEmpty(name)) {
-      if (this.hasNameError()) {
-        this.toggleNameError();
-      }
-      this.setName(name);
+    this.disableButton();
+    if (!this.isEmpty(this.trim(name)) && this.name != this.trim(name)) {
+      this.hideError();
+      this.setName(this.trim(name));
+    } else if (this.name != this.trim(name)) {
+      this.showError();
+      this.hideSpinner();
+      this.enableButton();
     } else {
-      if (!this.hasNameError()) {
-        this.toggleNameError();
-        this.hideSpinner();
-      }
+      this.hideSpinner();
+      this.enableButton();
     }
     return false;
   }
 
 
   /**
-   * Detecta si el input 'name' tiene el mensaje de error
-   * 
-   * @returns boolean
-   */
-  hasNameError() {
-    if (document.getElementById('name')?.classList.contains('invalid')) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  /**
-   * Muestra o oculta los mensajes de error en el input de nombre
+   * Muestra el mensaje de error
    * 
    * @returns void
    */
-  toggleNameError() {
-    if (document.getElementById('name')?.classList.contains('invalid')) {
-      document.getElementById('name')?.classList.remove('invalid');
-      document.getElementsByClassName('name-invalid')[0].setAttribute("style", "display: none");
-    } else {
-      document.getElementById('name')?.classList.add('invalid');
-      document.getElementsByClassName('name-invalid')[0].setAttribute("style", "display: block");
-    }
+  showError() {
+    document.getElementById('name')?.classList.add('invalid');
+    document.getElementsByClassName('name-invalid')[0].setAttribute("style", "display: block");
+  }
+
+  /**
+   * Oculta el mensaje de error
+   * 
+   * @returns void
+   */
+  hideError() {
+    document.getElementById('name')?.classList.remove('invalid');
+    document.getElementsByClassName('name-invalid')[0].setAttribute("style", "display: none");
   }
 
   /**
@@ -114,6 +118,24 @@ export class PredictComponent implements OnInit {
   hideSpinner() {
     document.getElementById('spinner-name')?.classList.remove('d-block');
     document.getElementById('spinner-name')?.classList.add('d-none');
+  }
+
+  /**
+   * Deshabilita el botón de "Predict"
+   * 
+   * @returns void
+   */
+  disableButton() {
+    document.getElementById('predict-button')?.classList.add('disabled');
+  }
+
+  /**
+   * Habilita el botón de "Predict"
+   * 
+   * @returns void
+   */
+  enableButton() {
+    document.getElementById('predict-button')?.classList.remove('disabled');
   }
 
 }
