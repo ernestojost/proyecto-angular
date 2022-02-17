@@ -1,0 +1,61 @@
+<div class="container">
+    <h1 class="text-center display-2 mt-5">Datos de tu IP</h1>
+    <p class="text-center lead">
+      Mediante API se muestra tu IP y diferentes datos que se obtienen a partir de la misma
+    </p>
+  
+    <div *ngIf="ip" class="text-center mt-5">
+        <h2 class="fs-1">IP: <span>{{ ip }}</span></h2>
+        <h6>Es de EEUU: {{ is_eu }}</h6>
+        <h6>Ciudad: {{ city }}</h6>
+        <h6>Región: {{ region }}</h6>
+        <h6>Código de región: {{ region_code }}</h6>
+        <h6>Nombre de país: {{ country_name }}</h6>
+        <h6>Código de país: {{ country_code }}</h6>
+        <h6>Nombre de continente: {{ continent_name }}</h6>
+        <h6>Código de continente: {{ continent_code }}</h6>
+        <h6>Latitud: {{ latitude }}</h6>
+        <h6>Longitud: {{ longitude }}</h6>
+        <h6>Código postal: {{ postal }}</h6>
+        <h6>Código de teléfono: {{ calling_code }}</h6>
+        <h6>Bandera del país: <a href="{{ flag }}"><img src="{{ flag }}" alt="Bandera"></a></h6>
+        <h6>Emoji de bandera: {{ emoji_flag }}</h6>
+        <h6>Emoji unicode: {{ emoji_unicode }}</h6>
+        <h5 class="mt-5">ASN</h5>
+        <h6>ASN: {{ asn }}</h6>
+        <h6>Nombre: {{ asn_name }}</h6>
+        <h6>Dominio: {{ asn_domain }}</h6>
+        <h6>Ruta: {{ asn_route }}</h6>
+        <h6>Tipo: {{ asn_type }}</h6>
+        <h5 class="mt-5">LENGUAJE</h5>
+        <h6>Nombre: {{ languages_name }}</h6>
+        <h6>Nativo: {{ languages_native }}</h6>
+        <h6>Código: {{ languages_code }}</h6>
+        <h5 class="mt-5">MONEDA</h5>
+        <h6>Nombre: {{ currency_name }}</h6>
+        <h6>Código: {{ currency_code }}</h6>
+        <h6>Símbolo: {{ currency_symbol }}</h6>
+        <h6>Nativa: {{ currency_native }}</h6>
+        <h6>en plural: {{ currency_plural }}</h6>
+        <h5 class="mt-5">TIME ZONE</h5>
+        <h6>Nombre: {{ time_zone_name }}</h6>
+        <h6>Abreviado: {{ time_zone_abbr }}</h6>
+        <h6>Diferencia: {{ time_zone_offset }}</h6>
+        <h6>Is dst: {{ time_zone_is_dst }}</h6>
+        <h6>Tiempo actual: {{ time_zone_current_time }}</h6>
+        <h5 class="mt-5">AMENAZA</h5>
+        <h6>Es tor: {{ threat_is_tor }}</h6>
+        <h6>Es proxy: {{ threat_is_proxy }}</h6>
+        <h6>Es anónimo: {{ threat_is_anonymous }}</h6>
+        <h6>Es un hacker conocido: {{ threat_is_known_attacker }}</h6>
+        <h6>Es un abusador conocido: {{ threat_is_known_abuser }}</h6>
+        <h6>Es una amenaza: {{ threat_is_threat }}</h6>
+        <h6>Es falsa: {{ threat_is_bogon }}</h6>
+        <h6 class="mt-5">Contador: {{ count }}</h6>
+        
+        <a href="https://www.ipify.org/" target="_blank" class="d-block text-reset text-muted text-decoration-none lead mt-5">ipify.org</a>
+        <a href="https://ipdata.co/" target="_blank" class="d-block text-reset text-muted text-decoration-none lead mt-1">ipdata.co</a>
+    </div>
+    
+  </div>
+  

@@ -53,7 +53,10 @@
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-4">Enlaces útiles</h6>
           <p>
-            <a routerLink="/" class="text-reset text-decoration-none">Predecir</a>
+            <a routerLink="/" class="text-reset text-decoration-none" (click)="moveToTop()">Predecir</a>
+          </p>
+          <p>
+            <a routerLink="/ip" class="text-reset text-decoration-none" (click)="moveToTop()">IP</a>
           </p>
         </div>
 

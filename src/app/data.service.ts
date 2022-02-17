@@ -33,4 +33,12 @@ export class DataService {
     }
     return 'Unknown';
   }
+
+  getIP() {
+    return this.http.get<any>('https://api.ipify.org/?format=json');
+  }
+
+  getDataByIP(ip:string) {    
+    return this.http.get<any>('https://api.ipdata.co/' + ip + '?api-key=ceddb20240a562554b508745b08b3b1f34a0586f50f3ee1b23000a65');
+  }
 }

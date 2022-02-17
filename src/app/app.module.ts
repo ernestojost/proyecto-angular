@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PredictGenderComponent } from './predict-gender/predict-gender.component';
 import { PredictNationalityComponent } from './predict-nationality/predict-nationality.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IpComponent } from './ip/ip.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     FooterComponent,
     PredictGenderComponent,
-    PredictNationalityComponent
+    PredictNationalityComponent,
+    IpComponent
   ],
   imports: [
     BrowserModule,
