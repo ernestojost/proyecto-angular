@@ -80,10 +80,19 @@ export class PredictGenderComponent implements OnInit {
     this.setGender('');
     this.dataService.predictGenderFromName(name).subscribe(
       data => {
-        this.setGender(data.gender);
+        this.setGender(this.traslateGender(data.gender));
         this.setProbability(data.probability);
         this.setCount(data.count);
       }
     )
+  }
+
+  // Pasa el texto de genero de ingles a español
+  traslateGender(gender: string) {
+    if (gender === 'male') {
+      return 'hombre';
+    } else {
+      return 'mujer';
+    }
   }
 }

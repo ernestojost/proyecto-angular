@@ -15,8 +15,13 @@
         #name
       />
       <label for="name">Nombre</label>
+      <div class="name-invalid">
+        Por favor, escriba un nombre.
+      </div>
     </div>
-    <button class="btn btn-success w-100">Predecir</button>
+    <button class="btn btn-success w-100">
+      Predecir
+    </button>
   </form>
 
   <app-predict-age [name]="name.value"></app-predict-age>

@@ -1,4 +1,4 @@
-<div class="card my-5" *ngIf="predictAge.age != 0">
+<div class="card my-5" *ngIf="name != ''">
   <div class="card-header">Edad</div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
@@ -15,7 +15,7 @@
       </ng-template>
 
       <p class="blockquote-footer d-flex justify-content-end mt-2">
-        <a href="https://api.agify.io/" class="text-muted text-decoration-none">
+        <a href="https://agify.io/" class="text-muted text-decoration-none">
           api.agify.io
         </a>
       </p>
