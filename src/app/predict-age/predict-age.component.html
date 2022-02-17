@@ -5,8 +5,7 @@
       <p *ngIf="predictAge.count != 0; else elseAgify">
         A partir de <b>{{ predictAge.count }}</b>
         personas con el nombre
-        <b>{{ name }}</b>
-        , la edad aproximada es de <b>{{ predictAge.age }}</b> años.
+        <b>{{ name }}</b>, la edad aproximada es de <b>{{ predictAge.age }}</b> años.
       </p>
       <ng-template #elseAgify>
         <p>

@@ -22,8 +22,6 @@ export class PredictNationalityComponent implements OnInit {
     this.name = ''; 
     this.dataService = dataService;
     this.predictNationality = [];
-    console.log(this.predictNationality);
-
   }
 
   ngOnInit(): void {
@@ -51,6 +49,7 @@ export class PredictNationalityComponent implements OnInit {
 
   // Se llama cuando se modifica el nombre y se envía
   ngOnChanges() {
+    this.name = this.trim(this.name);
     if (!this.stringIsEmpty(this.name)) {
       this.predictNationalityByName(this.name);
     }
@@ -68,8 +67,17 @@ export class PredictNationalityComponent implements OnInit {
 
   // Detecta si un string está vacío
   stringIsEmpty(str:string) {
-    str.replace(/ /g,'');
     return (!str || 0 === str.length);
+  }
+
+  /**
+   * Quita espacios en blanco de un string
+   * 
+   * @param str String que se quiere limpiar espacion en blanco
+   * @returns String sin espacios en blanco
+   */
+  trim(str:string) {
+    return str.replace(/ /g,'');
   }
 
   // Consume el API para obtener la edad
@@ -77,14 +85,18 @@ export class PredictNationalityComponent implements OnInit {
     this.clearPredictNationality();
     this.dataService.predictNationalityFromName(name).subscribe(
       data => {
-        console.log('acaaa');
-        console.log(data);
-        /* data.forEach(country => {
-          this.predictNationality.push(country);
-        }); */
-        console.log(this.predictNationality);
+        data.country.forEach( (valor: any) => {
+          var probability = Math.round(valor.probability * 100);
+          var country = this.getCountryName(valor.country_id);
+          this.predictNationality.push(new PredictNationality(country, probability));
+        });
       }
     )
+  }
+
+  // Obtiene el nombre del país a partir del country id
+  getCountryName(country_id:string) {
+    return this.dataService.getCountryName(country_id);
   }
 
 }

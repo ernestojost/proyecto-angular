@@ -1,18 +1,19 @@
-<div class="card my-5" *ngIf="!arrayIsEmpty(predictNationality)">
-  <div class="card-header">Género</div>
+<div class="card my-5" *ngIf="!stringIsEmpty(name)">
+  <div class="card-header">Nacionalidad</div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <p *ngIf="predictNationality != []; else elseNationalize">
-        Las probabilidades para el nombre <b>{{ name }}</b> son las siguientes:
-      </p>
-
-      <ul *ngIf="predictNationality != []; else elseNationalize">
-        <li *ngFor="let country of predictNationality">
-          <b> {{ country.country_id }}</b
-          >: {{ country.probability }}%
-        </li>
-      </ul>
-
+      <div *ngIf="!arrayIsEmpty(predictNationality); else elseNationalize">
+        <p>
+          Para el nombre <b>{{ name }}</b> las posibles nacionalidades son las siguientes:
+        </p>
+        <ul>
+          <li *ngFor="let country of predictNationality">
+            <b> {{ country.country_id }}</b
+            >: {{ country.probability }}%
+          </li>
+        </ul>
+      </div>
+      
       <ng-template #elseNationalize>
         <p>
           No hay personas con el nombre <b>{{ name }}</b> en los registros de

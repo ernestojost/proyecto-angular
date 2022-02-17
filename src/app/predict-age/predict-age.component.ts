@@ -59,6 +59,7 @@ export class PredictAgeComponent implements OnInit {
 
   // Se llama cuando se modifica el nombre y se envía
   ngOnChanges() {
+    this.name = this.trim(this.name);
     if (!this.isEmpty(this.name)) {
       this.predictAgeByName(this.name);
     }
@@ -66,8 +67,12 @@ export class PredictAgeComponent implements OnInit {
 
   // Detecta si un string está vacío
   isEmpty(str:string) {
-    str.replace(/ /g,'');
     return (!str || 0 === str.length);
+  }
+
+  // Quita espacios en blanco
+  trim(str:string) {
+    return str.replace(/ /g,'');
   }
 
   // Consume el API para obtener la edad
