@@ -52,6 +52,7 @@ export class PredictComponent implements OnInit {
    * @returns false para evitar el submit del formulario
    */
   predict(name:string) {
+    this.showSpinner();
     if (!this.isEmpty(name)) {
       if (this.hasNameError()) {
         this.toggleNameError();
@@ -60,6 +61,7 @@ export class PredictComponent implements OnInit {
     } else {
       if (!this.hasNameError()) {
         this.toggleNameError();
+        this.hideSpinner();
       }
     }
     return false;
@@ -92,6 +94,26 @@ export class PredictComponent implements OnInit {
       document.getElementById('name')?.classList.add('invalid');
       document.getElementsByClassName('name-invalid')[0].setAttribute("style", "display: block");
     }
+  }
+
+  /**
+   * Muestra el spinner de carga
+   * 
+   * @returns void
+   */
+  showSpinner() {
+    document.getElementById('spinner-name')?.classList.remove('d-none');
+    document.getElementById('spinner-name')?.classList.add('d-block');
+  }
+
+  /**
+   * Oculta el spinner de carga
+   * 
+   * @returns void
+   */
+  hideSpinner() {
+    document.getElementById('spinner-name')?.classList.remove('d-block');
+    document.getElementById('spinner-name')?.classList.add('d-none');
   }
 
 }

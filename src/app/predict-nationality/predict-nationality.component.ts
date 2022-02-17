@@ -49,6 +49,9 @@ export class PredictNationalityComponent implements OnInit {
 
   // Se llama cuando se modifica el nombre y se envía
   ngOnChanges() {
+    if (!this.isPredictNacionalityHidden()) {
+      this.hidePredictNacionality();
+    }
     this.name = this.trim(this.name);
     if (!this.stringIsEmpty(this.name)) {
       this.predictNationalityByName(this.name);
@@ -90,6 +93,8 @@ export class PredictNationalityComponent implements OnInit {
           var country = this.getCountryName(valor.country_id);
           this.predictNationality.push(new PredictNationality(country, probability));
         });
+        this.showPredictNacionality()
+        this.hideSpinner();
       }
     )
   }
@@ -97,6 +102,45 @@ export class PredictNationalityComponent implements OnInit {
   // Obtiene el nombre del país a partir del country id
   getCountryName(country_id:string) {
     return this.dataService.getCountryName(country_id);
+  }
+
+  /**
+   * Oculta el componente de nacionalidad
+   * 
+   * @returns void
+   */
+   hidePredictNacionality() {
+    document.getElementById('predict-nationality-component')?.classList.remove('d-block');
+    document.getElementById('predict-nationality-component')?.classList.add('d-none');
+  }
+
+  /**
+   * Muestra el componente de nacionalidad
+   * 
+   * @returns void
+   */
+  showPredictNacionality() {
+    document.getElementById('predict-nationality-component')?.classList.remove('d-none');
+    document.getElementById('predict-nationality-component')?.classList.add('d-block');
+  }
+
+  /**
+   * Detecta si el componente de nacionalidad está oculto
+   * 
+   * @returns boolean
+   */
+  isPredictNacionalityHidden() {
+    return document.getElementById('predict-nationality-component')?.classList.contains('d-none');
+  }
+
+  /**
+   * Oculta el spinner de carga
+   * 
+   * @returns void
+   */
+  hideSpinner() {
+    document.getElementById('spinner-name')?.classList.remove('d-block');
+    document.getElementById('spinner-name')?.classList.add('d-none');
   }
 
 }

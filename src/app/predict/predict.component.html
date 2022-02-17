@@ -24,6 +24,10 @@
     </button>
   </form>
 
+  <div id="spinner-name" class="spinner-border text-success mx-auto d-none mt-5" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
   <app-predict-age [name]="name.value"></app-predict-age>
 
   <app-predict-gender [name]="name.value"></app-predict-gender>

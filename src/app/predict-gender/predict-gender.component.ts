@@ -59,6 +59,9 @@ export class PredictGenderComponent implements OnInit {
 
   // Se llama cuando se modifica el nombre y se envía
   ngOnChanges() {
+    if (!this.isPredictGenderHidden()) {
+      this.hidePredictGender();
+    }
     this.name = this.trim(this.name);
     if (!this.isEmpty(this.name)) {
       this.predictGenderByName(this.name);
@@ -83,6 +86,8 @@ export class PredictGenderComponent implements OnInit {
         this.setGender(this.traslateGender(data.gender));
         this.setProbability(data.probability);
         this.setCount(data.count);
+        this.showPredictGender();
+        this.hideSpinner();
       }
     )
   }
@@ -94,5 +99,44 @@ export class PredictGenderComponent implements OnInit {
     } else {
       return 'mujer';
     }
+  }
+
+  /**
+   * Oculta el componente de género
+   * 
+   * @returns void
+   */
+  hidePredictGender() {
+    document.getElementById('predict-gender-component')?.classList.remove('d-block');
+    document.getElementById('predict-gender-component')?.classList.add('d-none');
+  }
+
+  /**
+   * Muestra el componente de género
+   * 
+   * @returns void
+   */
+  showPredictGender() {
+    document.getElementById('predict-gender-component')?.classList.remove('d-none');
+    document.getElementById('predict-gender-component')?.classList.add('d-block');
+  }
+
+  /**
+   * Detecta si el componente de género está oculto
+   * 
+   * @returns boolean
+   */
+  isPredictGenderHidden() {
+    return document.getElementById('predict-gender-component')?.classList.contains('d-none');
+  }
+
+  /**
+   * Oculta el spinner de carga
+   * 
+   * @returns void
+   */
+  hideSpinner() {
+    document.getElementById('spinner-name')?.classList.remove('d-block');
+    document.getElementById('spinner-name')?.classList.add('d-none');
   }
 }

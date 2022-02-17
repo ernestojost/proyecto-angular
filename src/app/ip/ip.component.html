@@ -4,8 +4,9 @@
       Mediante API se muestra tu IP y diferentes datos que se obtienen a partir de la misma
     </p>
   
-    <div *ngIf="ip" class="text-center mt-5">
-        <h2 class="fs-1">IP: <span>{{ ip }}</span></h2>
+    <div *ngIf="ip;else spinnerIP" class="text-center mt-5">
+      <h2 class="fs-1">IP: <span>{{ ip }}</span></h2>
+      <div *ngIf="city">
         <h6>Es de EEUU: {{ is_eu }}</h6>
         <h6>Ciudad: {{ city }}</h6>
         <h6>Región: {{ region }}</h6>
@@ -52,10 +53,17 @@
         <h6>Es una amenaza: {{ threat_is_threat }}</h6>
         <h6>Es falsa: {{ threat_is_bogon }}</h6>
         <h6 class="mt-5">Contador: {{ count }}</h6>
-        
-        <a href="https://www.ipify.org/" target="_blank" class="d-block text-reset text-muted text-decoration-none lead mt-5">ipify.org</a>
-        <a href="https://ipdata.co/" target="_blank" class="d-block text-reset text-muted text-decoration-none lead mt-1">ipdata.co</a>
+      </div>
+      
+      <a href="https://www.ipify.org/" target="_blank" class="d-block text-reset text-muted text-decoration-none lead mt-5">ipify.org</a>
+      <a href="https://ipdata.co/" target="_blank" class="d-block text-reset text-muted text-decoration-none lead mt-1">ipdata.co</a>
     </div>
+
+    <ng-template #spinnerIP>
+      <div id="spinner-ip" class="spinner-border text-success mx-auto mt-5 d-block" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </ng-template>
     
   </div>
   
